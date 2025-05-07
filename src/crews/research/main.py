@@ -4,7 +4,7 @@ import warnings
 
 from datetime import datetime
 
-from crew import TiangongAiCrew
+from src.crews.research.crew import TiangongAiCrew
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -14,11 +14,10 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 # interpolate any tasks and agents information
 
 
-def run():
+def run(inputs):
     """
     Run the crew.
     """
-    inputs = {"topic": "AI LLMs", "current_year": str(datetime.now().year)}
 
     try:
         TiangongAiCrew().crew().kickoff(inputs=inputs)

@@ -1,29 +1,24 @@
-import tempfile
+from fastapi import APIRouter, HTTPException
 
-from fastapi import APIRouter, File, HTTPException, UploadFile
-
-from src.models.models import ResponseWithoutPageNum
-from src.services.docx_service import unstructure_docx
+from src.models.models import ResearchInput
+from src.crews.research.main import run
 
 router = APIRouter()
 
 
 @router.post(
     "/research",
-    response_model=ResponseWithoutPageNum,
-    response_description="List of chunks.",
+    # response_model=ResponseWithoutPageNum,
+    response_description="Crews research result.",
 )
-async def docx(file: UploadFile = File(...)):
+async def research(input: ResearchInput):
     """
     This endpoint allows you to extract text from a PDF document.
     It takes a PDF file as input and returns a list of chunks with page numbers.
     """
-    with tempfile.NamedTemporaryFile(delete=True) as tmp:
-        tmp.write(await file.read())
-        tmp_path = tmp.name
 
-        try:
-            result = unstructure_docx(tmp_path)
-            return ResponseWithoutPageNum.from_result(result)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+    try:
+        result = run(input.model_dump())
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")

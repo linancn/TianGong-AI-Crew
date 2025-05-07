@@ -7,7 +7,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from src.config.config import FASTAPI_AUTH, FASTAPI_BEARER_TOKEN
 
-from src.routers import health_router
+from src.routers import health_router, research_router
 
 load_dotenv()
 
@@ -37,3 +37,4 @@ app.add_middleware(
 )
 
 app.include_router(health_router.router)
+app.include_router(research_router.router)

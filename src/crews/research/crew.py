@@ -2,6 +2,10 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+from src.crews.research.tools.tavily_search import TavilySearchTool
+
+
+tavily_search_tool = TavilySearchTool()
 
 
 @CrewBase
@@ -13,7 +17,7 @@ class TiangongAiCrew:
 
     @agent
     def researcher(self) -> Agent:
-        return Agent(config=self.agents_config["researcher"], verbose=True)  # type: ignore[index]
+        return Agent(config=self.agents_config["researcher"], verbose=True, tools=[tavily_search_tool])  # type: ignore[index]
 
     @agent
     def reporting_analyst(self) -> Agent:

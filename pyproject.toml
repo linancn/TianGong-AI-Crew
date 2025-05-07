@@ -1,7 +1,7 @@
 [project]
 name = "tiangong_ai_crew"
 version = "0.1.0"
-description = "TianGong-AI-Crew using crewAI"
+description = "TianGong-AI-Crew using CrewAI"
 authors = [{ name = "Nan LI", email = "linanenv@gmail.com" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [

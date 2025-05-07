@@ -7,4 +7,4 @@ class ResearchInput(BaseModel):
 
 
 class ResearchOutput(BaseModel):
-    results: str
+    result: str

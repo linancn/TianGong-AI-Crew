@@ -1,3 +1,13 @@
+[project]
+name = "tiangong_ai_crew"
+version = "0.1.0"
+description = "TianGong-AI-Crew using crewAI"
+authors = [{ name = "Nan LI", email = "linanenv@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.118.0,<1.0.0"
+]
+
 [tool.black]
 line-length = 100
 exclude = '''

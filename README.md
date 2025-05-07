@@ -28,13 +28,18 @@ pip install black
 black .
 ```
 
+Train Agents:
+```bash
+python -m src.crews.research.train
+```
+
 Start Server:
 
 ```bash
 
-uvicorn src.main:app --host 0.0.0.0 --port 7770
+uvicorn src.main:app --host 0.0.0.0 --port 9770
 
 # run in background
 
-nohup uvicorn src.main:app --host 0.0.0.0 --port 7770 > uvicorn.log 2>&1 &
+nohup uvicorn src.main:app --host 0.0.0.0 --port 9770 > uvicorn.log 2>&1 &
 ```

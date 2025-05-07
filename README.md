@@ -30,7 +30,7 @@ black .
 
 Train Agents:
 ```bash
-python -m src.crews.research.train
+python -m src.crews.research.train 5 train.pkl
 ```
 
 Start Server:

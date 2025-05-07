@@ -1,9 +1,14 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 from src.crews.research.tools.tavily_search import TavilySearchTool
+from src.config.config import OPENAI_API_KEY, OPENAI_MODEL
 
+llm = LLM(
+    model=OPENAI_MODEL,
+    api_key=OPENAI_API_KEY,
+)
 
 tavily_search_tool = TavilySearchTool()
 
@@ -17,13 +22,16 @@ class TiangongAiCrew:
 
     @agent
     def researcher(self) -> Agent:
-        return Agent(config=self.agents_config["researcher"], verbose=True, tools=[tavily_search_tool])  # type: ignore[index]
+        return Agent(
+            config=self.agents_config["researcher"],
+            verbose=True,
+            tools=[tavily_search_tool],
+            llm=llm,
+        )
 
     @agent
     def reporting_analyst(self) -> Agent:
-        return Agent(
-            config=self.agents_config["reporting_analyst"], verbose=True  # type: ignore[index]
-        )
+        return Agent(config=self.agents_config["reporting_analyst"], verbose=True, llm=llm)
 
     @task
     def research_task(self) -> Task:

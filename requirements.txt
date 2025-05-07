@@ -1,6 +1,5 @@
 crewai[tools]
 fastapi
-python-dotenv
 tavily-python
 toml
 uvicorn[standard]

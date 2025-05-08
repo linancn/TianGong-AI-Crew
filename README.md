@@ -22,6 +22,11 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -r requirements.txt --upgrade
 ```
 
+Lock requirements:
+```bash
+pip freeze > requirements_freeze.txt
+```
+
 Auto lint:
 ```bash
 pip install black

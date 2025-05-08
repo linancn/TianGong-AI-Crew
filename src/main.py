@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+# import openlit
 
 # from fastapi.staticfiles import StaticFiles
 
@@ -8,6 +9,7 @@ from src.config.config import FASTAPI_AUTH, FASTAPI_BEARER_TOKEN
 
 from src.routers import health_router, research_router
 
+# openlit.init(otlp_endpoint="http://127.0.0.1:4318", disable_metrics=True)
 
 bearer_scheme = HTTPBearer()
 

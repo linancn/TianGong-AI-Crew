@@ -17,4 +17,4 @@ COPY .secrets/secrets.toml  ./.secrets/secrets.toml
 COPY src/ ./src/
 
 # Command to run
-CMD ["uvicorn", "src.main:app", "--host 0.0.0.0", "--port 9770"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "9770"]
